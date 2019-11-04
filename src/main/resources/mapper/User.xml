@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.mapper.AuthenticationMapper">
+
+    <insert id="insert">
+        insert into users (id,email,account,name,password,sex) values (
+        #{id},
+        #{email},
+        #{account},
+        #{name},
+        #{password},
+        #{sex}
+        )
+    </insert>
+    <update id="updata">
+        update users set
+          email = #{email},
+          account = #{account},
+          name = #{name},
+          password = #{password},
+          sex = #{sex}
+        where id = #{id}
+    </update>
+
+
+    <select id="selectOne" resultType="com.example.demo.model.User">
+        select * from users where id = #{id}
+    </select>
+
+
+</mapper>
