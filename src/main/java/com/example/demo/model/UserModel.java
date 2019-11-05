@@ -14,6 +14,7 @@ import java.io.Serializable;
 @Data
 @ApiModel(value = "用户信息", description = "请求参数body")
 public class UserModel extends BaseProtocolIn implements Serializable {
+    //生成UID:File->settings->Editor->Inspections->Serialization issues->Serializable class without 'serialVersionUID'
 
     private static final long serialVersionUID = 7034302540275683167L;
     @ApiModelProperty(value = "id")
