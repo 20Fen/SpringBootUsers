@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
- * Description:
+ * Description:  controller 类
  */
 @RestController
 @Api("登录接口")

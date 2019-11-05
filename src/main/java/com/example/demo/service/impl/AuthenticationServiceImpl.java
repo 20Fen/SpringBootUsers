@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Description:
+ * Description: service层
  */
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
@@ -29,7 +29,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     @Resource
     private AuthenticationMapper authenticationMapper;
 
-
+    /**
+     * @description  登录
+     * @author Y
+     * @Param [ userModel httpServletRequest httpServletResponse ]
+     * @return com.config.AjaxResult
+     */
     @Override
     public AjaxResult login(UserModel userModel, HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
         AjaxResult result = new AjaxResult();
@@ -71,7 +76,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     /**
      * 退出登录
-     *
      * @param httpServletRequest
      * @param httpServletResponse
      * @return
@@ -91,6 +95,12 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return result;
     }
 
+    /**
+     * @description 新建用户 修改用户
+     * @author Y
+     * @Param [ user ]
+     * @return java.lang.String
+     */
     @Override
     public String createUser(User user) {
 

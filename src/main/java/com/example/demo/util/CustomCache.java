@@ -9,11 +9,7 @@ import org.springframework.util.SerializationUtils;
 import java.util.*;
 
 /**
- * Description:
- *
- * @author yangfl
- * @date 2019年10月29日 15:27
- * Version 1.0
+ * Description: 缓存
  */
 public class CustomCache<K, V> implements Cache<K, V> {
 

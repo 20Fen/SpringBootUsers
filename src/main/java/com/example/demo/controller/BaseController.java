@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 
 /**
  * 组件控制器封装
- *
- * @author wuxiaowei
  */
 @Log4j2
 @ControllerAdvice

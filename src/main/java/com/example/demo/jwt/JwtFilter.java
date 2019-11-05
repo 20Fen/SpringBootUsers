@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
- * Description:
+ * Description:  jwt拦截认证
  */
 @Log4j2
 public class JwtFilter extends BasicHttpAuthenticationFilter {

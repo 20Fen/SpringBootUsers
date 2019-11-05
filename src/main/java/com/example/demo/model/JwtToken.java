@@ -3,11 +3,9 @@ package com.example.demo.model;
 import org.apache.shiro.authc.AuthenticationToken;
 
 /**
- * Description:
- *
- * @author yangfl
- * @date 2019年10月29日 10:28
- * Version 1.0
+ * Description:AuthenticationToken 用于收集用户提交的身份（如用户名）及凭据（如密码）。
+ * Shiro会调用CredentialsMatcher对象的doCredentialsMatch方法对AuthenticationInfo对象和AuthenticationToken进行匹配。
+ * 匹配成功则表示主体（Subject）认证成功，否则表示认证失败。
  */
 public class JwtToken implements AuthenticationToken {
     private String token;

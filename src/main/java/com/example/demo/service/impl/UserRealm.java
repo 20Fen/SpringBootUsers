@@ -18,10 +18,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * Description:
- *
- * @author yangfl
- * @date 2019年10月29日 10:46
- * Version 1.0
  */
 @Service
 public class UserRealm extends AuthorizingRealm {

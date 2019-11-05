@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
- * Description:
+ * Description:  接口
  */
 public interface AuthenticationService {
 

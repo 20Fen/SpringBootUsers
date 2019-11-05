@@ -8,7 +8,7 @@ import lombok.Data;
 import javax.validation.constraints.NotBlank;
 
 /**
- * Description:
+ * Description:  PO类
  */
 @Data
 @ApiModel(value = "用户信息", description = "请求参数body")

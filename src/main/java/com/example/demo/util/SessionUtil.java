@@ -8,11 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import java.util.Set;
 
 /**
- * Description:
- *
- * @author yangfl
- * @date 2019年10月28日 16:23
- * Version 1.0
+ * Description: session获取对象
  */
 public class SessionUtil {
     /**
@@ -23,7 +19,7 @@ public class SessionUtil {
     public User getUser() {
         String token = SecurityUtils.getSubject().getPrincipal().toString();
         String account = JwtUtil.getClaim(token, Constant.JWT_ACCOUNT);
-        String sid = JwtUtil.getClaim(token, Constant.JWT_TID);
+        String tid = JwtUtil.getClaim(token, Constant.JWT_TID);
         return JedisUtil.getSession(account);
     }
 
