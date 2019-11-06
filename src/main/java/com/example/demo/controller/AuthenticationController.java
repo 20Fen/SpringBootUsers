@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
@@ -20,6 +21,7 @@ import javax.validation.Valid;
  * Description:  controller 类
  */
 @RestController
+@RequestMapping("/account")
 @Api("登录接口")
 public class AuthenticationController {
 
