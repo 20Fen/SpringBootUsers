@@ -8,11 +8,12 @@ import com.example.demo.model.UserModel;
 import com.example.demo.service.AuthenticationService;
 import com.example.demo.util.*;
 import com.example.magic.Constant;
+import lombok.extern.log4j.Log4j2;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.apache.commons.lang.StringUtils;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +25,7 @@ import java.util.UUID;
  * Description: service层
  */
 @Service
+@Log4j2
 public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Resource
@@ -44,6 +46,8 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             result.addFail("用户名或密码错误");
         } else {
             if (user.getPassword().equals(user.getPassword())) {
+                log.info("用户密码:：" + user.getPassword());
+                log.info("是否登录" + StringUtils.equals(userModel.getPassword(), user.getPassword()));
                 Integer tokenTime = Integer.valueOf(AuthenticationPropUtil.getTokenExpireTime());
                 Integer sessionTime = Integer.valueOf(AuthenticationPropUtil.getSessionExpireTime());
 
