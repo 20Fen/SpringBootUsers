@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.exception.CustomException;
 import com.example.demo.model.JwtToken;
 import com.example.demo.util.AuthorityApiUtil;
 import com.example.magic.Constant;
@@ -55,14 +56,14 @@ public class UserRealm extends AuthorizingRealm {
         }
         boolean cached = JedisUtil.exists(JedisUtil.getSessionKey(account));
         // 有会话缓存且token验证通过，则shiro认证通过，token验证不通过会抛异常，在JwtFilter.isAccessAllowed中处理
-        try {
             if (cached && JwtUtil.verify(token)) {
                 return new SimpleAuthenticationInfo(token, token, "userRealm");
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        // 用户删除会清掉redis缓存，用户不存在放在最后检查，减少接口调用
+        if (AuthorityApiUtil.getUser(account) == null) {
+            throw new AuthenticationException("用户不存在");
         }
         // 会话缓存不存在
-        throw new AuthenticationException("Session已过期");
+        throw new AuthenticationException("会话已过期");
     }
 }

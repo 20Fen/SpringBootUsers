@@ -65,7 +65,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 // 缓存会话信息
                 JedisUtil.cacheSession(account, sessionTime, session);
                 // 缓存当前使用的token
-                JedisUtil.cacheCurrToken(account,uuid,sessionTime);
+                JedisUtil.cacheCurrToken(account,uuid,tokenTime);
                 // header返回token
                 httpServletResponse.setHeader(Constant.JWT_HEADER_KEY, token);
                 httpServletResponse.setHeader("Access-Control-Expose-Headers", Constant.JWT_HEADER_KEY);

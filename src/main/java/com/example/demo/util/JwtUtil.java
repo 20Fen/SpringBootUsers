@@ -3,6 +3,7 @@ package com.example.demo.util;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.demo.exception.CustomException;
 import com.example.magic.Constant;
 
 import java.io.UnsupportedEncodingException;
@@ -14,23 +15,19 @@ import java.util.UUID;
  */
 public class JwtUtil {
 
-    public static boolean verify(String token) throws Exception {
+    public static boolean verify(String token) {
         try {
             // 帐号加JWT私钥解密
-        String secret = null;
-        try {
-            secret = getClaim(token, Constant.JWT_ACCOUNT) + Base64ConvertUtil.decode(AuthenticationPropUtil.getProperty("auth.encryptJWTKey"));
-        } catch (UnsupportedEncodingException ex) {
-            ex.printStackTrace();
+            String secret = getClaim(token, Constant.JWT_ACCOUNT) + Base64ConvertUtil.decode(AuthenticationPropUtil.getProperty("auth.encryptJWTKey"));
+            Algorithm algorithm = Algorithm.HMAC256(secret);
+            JWTVerifier verifier = JWT.require(algorithm).build();
+            verifier.verify(token);
+            return true;
+        } catch (UnsupportedEncodingException e) {
+            throw new CustomException("jwt认证解密异常:"+e.getMessage());
         }
-        Algorithm algorithm = Algorithm.HMAC256(secret);
-        JWTVerifier verifier = JWT.require(algorithm).build();
-        verifier.verify(token);
-        return true;
-    } catch (
-    UnsupportedEncodingException e) {
-            throw new Exception("jwt认证解密异常");
-    }}
+    }
+
     /**
      * 获得Token中的信息，无需secret解密也能获得
      *
@@ -39,9 +36,9 @@ public class JwtUtil {
      * @return
      */
 
-        public static String getClaim(String token, String claim) {
-            return JWT.decode(token).getClaim(claim).asString();
-        }
+    public static String getClaim(String token, String claim) {
+        return JWT.decode(token).getClaim(claim).asString();
+    }
 
     /**
      * 生成token
@@ -61,7 +58,7 @@ public class JwtUtil {
             // 附带account、会话id
             return JWT.create()
                     .withClaim(Constant.JWT_ACCOUNT, account)
-                    .withClaim(Constant.JWT_TID,uuid)
+                    .withClaim(Constant.JWT_TID, uuid)
                     .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
