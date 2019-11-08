@@ -1,5 +1,6 @@
 package com.example.demo.jwt;
 
+import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.config.AjaxResult;
 import com.example.demo.model.JwtToken;
@@ -8,7 +9,6 @@ import com.example.magic.Constant;
 import com.example.demo.util.JedisUtil;
 import com.example.demo.util.JwtUtil;
 import lombok.extern.log4j.Log4j2;
-import net.minidev.json.JSONObject;
 import org.apache.commons.codec.binary.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 /**
  * Description:  jwt拦截认证
@@ -161,7 +162,6 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
             if (!StringUtils.equals(tid, currToken)) {
                 return false;
             }
-
             // 缓存的session
             Session session = JedisUtil.getSession(account);
             tid = JwtUtil.randomUUID();

@@ -47,9 +47,9 @@ public class AjaxResult {
         return statuscode;
     }
 
-    public Map<String, ? extends Object> setStatuscode(int statuscode) {
+    public AjaxResult setStatuscode(int statuscode) {
         this.statuscode = statuscode;
-        return (Map<String, ? extends Object>) this;
+        return this;
     }
 
     public String getMessage() {
