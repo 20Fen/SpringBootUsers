@@ -63,6 +63,6 @@ public class UserRealm extends AuthorizingRealm {
             e.printStackTrace();
         }
         // 会话缓存不存在
-        throw new AuthenticationException("会话已过期");
+        throw new AuthenticationException("Session已过期");
     }
 }
