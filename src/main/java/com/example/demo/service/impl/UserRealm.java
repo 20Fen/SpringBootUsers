@@ -35,9 +35,9 @@ public class UserRealm extends AuthorizingRealm {
     public AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         String account = JwtUtil.getClaim(principalCollection.toString(), Constant.JWT_ACCOUNT);
-        // 设置用户角色
+        // 设置用户的角色
         simpleAuthorizationInfo.addRoles(AuthorityApiUtil.getRole(account));
-        // 设置用户权限
+        // 设置用户的权限
         simpleAuthorizationInfo.addStringPermissions(AuthorityApiUtil.getResource(account));
         return simpleAuthorizationInfo;
     }

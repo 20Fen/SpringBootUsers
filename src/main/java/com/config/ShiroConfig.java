@@ -57,7 +57,7 @@ public class ShiroConfig {
 
     /**
      * 配置使用自定义realm，cache
-     *
+     * SecurityManger:SecurityManager是Shiro核心，主要协调Shiro内部的各种安全组件
      * @param userRealm
      * @return
      */
