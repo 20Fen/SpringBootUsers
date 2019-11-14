@@ -27,7 +27,7 @@ public class AuthorityApiUtil {
 
     /**
      * 按account查询用户信息
-     *
+     * RestTemplate既包含rpc 有包含 http
      * @return
      */
     public static User getUser(String account) {
@@ -36,7 +36,7 @@ public class AuthorityApiUtil {
 
     /**
      * 按account查询用户角色
-     *
+     *RestTemplate既包含rpc 有包含 http
      * @return
      */
     public static List<String> getRole(String account) {
@@ -46,7 +46,7 @@ public class AuthorityApiUtil {
 
     /**
      * 按account查询用户有权限的资源
-     *
+     *RestTemplate既包含rpc 有包含 http
      * @return
      */
     public static List<String> getResource(String account) {
