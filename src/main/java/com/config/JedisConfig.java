@@ -41,6 +41,8 @@ public class JedisConfig {
         jedisPoolConfig.setMaxWaitMillis(maxWait);
         jedisPoolConfig.setMaxTotal(maxActive);
         jedisPoolConfig.setMinIdle(minIdle);
+        jedisPoolConfig.setTestOnBorrow(false);//jedis 第一次启动时，会报错
+        jedisPoolConfig.setTestOnReturn(true);
 
         return new JedisPool(jedisPoolConfig, host, port, timeout, null, database);
     }
