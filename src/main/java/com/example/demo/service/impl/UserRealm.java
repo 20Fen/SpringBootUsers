@@ -18,7 +18,7 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Service;
 
 /**
- * Description:
+ * Description:Realm是Shiro授权管理，重写父类中的doGetAuthorizationInfo（权限相关）、doGetAuthenticationInfo（身份认证）这两个方法
  */
 @Service
 public class UserRealm extends AuthorizingRealm {
