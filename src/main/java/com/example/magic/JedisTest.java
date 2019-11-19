@@ -40,7 +40,7 @@ public class JedisTest {
         Boolean isExist = jedis.hexists("user", "name");
         System.out.println(isExist);
         //删除某个字段
-//        jedis.hdel("user", "name");
+        jedis.hdel("user", "name");
         //获取整个hashMap
         Map<String, String> map = jedis.hgetAll("user");
         System.out.println(map);
