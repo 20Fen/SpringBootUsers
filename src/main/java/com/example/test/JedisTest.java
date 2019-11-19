@@ -3,6 +3,8 @@ package com.example.test;
 import com.example.demo.util.JedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -15,6 +17,7 @@ import java.util.Set;
  * Description: jedis使用
  */
 @Component
+@RequestMapping("/in")
 public class JedisTest {
 
     //jedis池使用
@@ -23,12 +26,13 @@ public class JedisTest {
     public void setJedisPool(JedisPool jedisPool) {
         JedisTest.jedisPool = jedisPool;
     }
-    @org.junit.Test
-    public  void main() {
+    @RequestMapping("/i")
+    public void main() {
 
         // 创建一个redis连接(也可以创建池)
-        Jedis jedis=new Jedis("127.0.0.1", 6379);
-
+//        Jedis jedis=new Jedis("127.0.0.1", 6379);
+        Jedis jedis = jedisPool.getResource();
+        if(null != jedis){
         // 写入一个字符串;
         jedis.set("key1", "string-value1");
         String value1 = jedis.get("key1");
@@ -98,5 +102,8 @@ public class JedisTest {
         // 获取set的片段
         Set<String> set2 = jedis.zrange("set2", 0, 10);
         System.out.println(set2);
+        }else {
+            return;
+        }
     }
 }
