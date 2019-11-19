@@ -1,6 +1,10 @@
 package com.example.test;
 
+import com.example.demo.util.JedisUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +14,16 @@ import java.util.Set;
 /**
  * Description: jedis使用
  */
+@Component
 public class JedisTest {
-
-    public static void main(String[] args) {
+//    jedis池使用
+    private static JedisPool jedisPool;
+    @Autowired
+    public void setJedisPool(JedisPool jedisPool) {
+        JedisTest.jedisPool = jedisPool;
+    }
+    @org.junit.Test
+    public  void main() {
 
         // 创建一个redis连接(也可以创建池)
         Jedis jedis=new Jedis("127.0.0.1", 6379);
