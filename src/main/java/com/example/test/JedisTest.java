@@ -1,4 +1,4 @@
-package com.example.magic;
+package com.example.test;
 
 import redis.clients.jedis.Jedis;
 
