@@ -16,7 +16,8 @@ import java.util.Set;
  */
 @Component
 public class JedisTest {
-//    jedis池使用
+
+    //jedis池使用
     private static JedisPool jedisPool;
     @Autowired
     public void setJedisPool(JedisPool jedisPool) {
@@ -31,7 +32,7 @@ public class JedisTest {
         // 写入一个字符串;
         jedis.set("key1", "string-value1");
         String value1 = jedis.get("key1");
-//        设置key的时间 单位秒
+        //设置key的时间 单位秒
         jedis.expire("key1", 60);
         // 打印string-value1
         System.out.println(value1);
