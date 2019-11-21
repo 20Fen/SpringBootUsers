@@ -43,6 +43,7 @@ public class JedisUtil {
      * @return
      */
     public static Object getValue(String key) {
+//        try块执行完毕后会自动关闭资源
         try (Jedis jedis = jedisPool.getResource()) {
             return SerializationUtils.deserialize(jedis.get(key.getBytes()));
         }
