@@ -134,6 +134,14 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         return account;
     }
 
+
+    /**
+     * 获取当前登录人资源权限
+     *
+     * @param httpServletRequest
+     * @param httpServletResponse
+     * @return
+     */
     @Override
     public AjaxResult permission(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
         AjaxResult result = new AjaxResult();
